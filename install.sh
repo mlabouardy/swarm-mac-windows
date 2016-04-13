@@ -4,6 +4,10 @@ n=6;
 driver="virtualbox";
 
 echo "Check if docker-machine is installed";
+if ![type docker-machine >/dev/null]; then
+    "Docker-machine is required.  Aborting."
+    exit 1;
+fi
 
 for ((i=1; i<=$n; i++)); do
 	echo "Creating node $i";
