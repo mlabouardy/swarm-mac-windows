@@ -6,3 +6,9 @@ DockerSwarm cluster in Windows &amp; Mac
 $ chmod +x install.sh
 $ ./install.sh
 ```
+
+## License
+
+MIT
+
+**Hell yeaah !**
