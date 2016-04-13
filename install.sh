@@ -18,13 +18,14 @@ fi
 
 # Create nodes cluster
 for ((i=1; i<=$CLUSTER_NODES; i++)); do
-	echo "Creating node $i";
-	docker-machine create --driver $CLUSTER_DRIVER node-$i --swarm --swarm-master --swarm-discovery=token://$token;
-	docker-machine create --driver $CLUSTER_DRIVER node-$i --swarm --swarm-addr=tcp://$ip:2375 --swarm-discovery=token://$token;
+	printf "\n********** Creating node $i\n\n";
+	docker-machine create --driver $CLUSTER_DRIVER node-$i
+	#docker-machine create --driver $CLUSTER_DRIVER node-$i --swarm --swarm-master --swarm-discovery=token://$token;
+	#docker-machine create --driver $CLUSTER_DRIVER node-$i --swarm --swarm-addr=tcp://$ip:2375 --swarm-discovery=token://$token;
 done
 
 # List created nodes and their IP address
-printf "List of nodes:\n\n";
+printf "\n********** List of nodes:\n\n";
 printf "%10s %20s\n"  "Machine" "IP";
 for ((i=1; i<=$CLUSTER_NODES; i++)); do
 	url=$(docker-machine url node-$i);
