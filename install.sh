@@ -23,4 +23,12 @@ for ((i=1; i<=$CLUSTER_NODES; i++)); do
 	docker-machine create --driver $CLUSTER_DRIVER node-$i --swarm --swarm-addr=tcp://$ip:2375 --swarm-discovery=token://$token;
 done
 
+# List created nodes and their IP address
+printf "List of nodes:\n\n";
+printf "%10s %20s\n"  "Machine" "IP";
+for ((i=1; i<=$CLUSTER_NODES; i++)); do
+	url=$(docker-machine url node-$i);
+	printf "%10s %30s\n"  "node-"$i $url;
+done
+
 $SHELL
